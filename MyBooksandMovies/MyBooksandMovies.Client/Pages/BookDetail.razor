@@ -1,0 +1,35 @@
+﻿@page "/BookDetail/{bookKey}"
+<h2>Book Details</h2>
+@if (detailedBook == null){ 
+    <p>@message</p>
+}
+else{
+    <BookDisplay Book="detailedBook" CoverImageUrl="@detailedBook.CoverImageUrlLarge" />
+
+}
+
+
+@code {
+    [Parameter]
+    public string bookKey{get;set;}
+    [Inject]
+    public IBookService bookService { get; set; }
+    private Book detailedBook;
+    public string message;
+
+    protected override async Task OnInitializedAsync()
+
+    {
+        bookKey = Uri.UnescapeDataString(bookKey);
+        detailedBook = await bookService.GetBookByBookKey(bookKey);
+        
+               
+        if (detailedBook == null)
+        {
+            message = "Database error ...";
+        }
+       
+
+	}
+
+ } 

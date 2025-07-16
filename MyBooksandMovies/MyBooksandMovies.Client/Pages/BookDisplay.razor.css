@@ -1,0 +1,27 @@
+﻿.booktitle {
+    color: #343434;
+    text-decoration: none;
+}
+
+.custom-icon-color {
+    color: #700C0D;
+   
+}
+
+
+
+.icon-border {
+    display: inline-block;
+    padding: 0.4rem 0.4rem 0rem 0.4rem;
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+    .icon-border:hover {
+        box-shadow: 0 0 6px rgba(112, 12, 13, 0.3); 
+        border-radius: 3px;
+    }
+.favorite-icon {
+    cursor: pointer;
+    
+    
+}

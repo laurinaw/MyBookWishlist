@@ -1,0 +1,83 @@
+﻿@page "/"
+@inject IJSRuntime JSRuntime
+
+<div class="searchbar-wrapper"> 
+<form @onsubmit="OnSearch">
+      <div class="icon-in-searchbar">
+        <input @bind="searchInput" class="form-control inputBox " placeholder="Search for books by title or author..." />
+        <button type="submit" class="searchIcon"><i class="bi bi-search"></i></button>
+      </div>
+</form>
+</div>
+<div class="mt-5 pt-2">
+<p class="message">@message</p>
+
+<Virtualize ItemsProvider="LoadBooks" TItem="Book" Context="book" ItemSize="300" @ref="virtualizeRef">
+
+    <BookDisplay Book="book" CoverImageUrl="@book.CoverImageUrlMedium" />
+
+
+</Virtualize>
+
+</div>
+
+
+
+@code {
+    [Inject]
+    public IBookService bookService { get; set; }
+    public OpenLibrarySearchResult booksResult;
+    private string searchInput;
+    private string searchInputSnapShot;
+    private Virtualize<Book> virtualizeRef;
+    public string message;
+
+
+
+    private async Task OnSearch() 
+    {   message = "Fetching Data...";
+        searchInputSnapShot = searchInput;
+        booksResult = await bookService.GetSearchedBooks(searchInputSnapShot);
+        if (booksResult == null || booksResult.Books == null)
+        {
+            message = "Database error ...";
+
+
+        }
+        else if (booksResult.NumFound < 0){
+            message = "There seems to be a technical error, try again with different input";
+        }
+        else if (booksResult.NumFound != 0)
+        {
+            message = $"Found {booksResult.NumFound} books matching {searchInput}";
+
+
+        }
+        else
+        {
+
+            message = "No books found for your searchresult";
+        }
+        await virtualizeRef.RefreshDataAsync(); 
+
+    }
+    private async ValueTask<ItemsProviderResult<Book>> LoadBooks(ItemsProviderRequest request)
+    {
+        if (booksResult?.Books == null)
+        {
+            return new ItemsProviderResult<Book>(new List<Book>(), 0);
+        }
+        else
+        {
+            var items = booksResult.Books
+                .Skip(request.StartIndex)
+                .Take(request.Count)
+                .ToList();
+                return new ItemsProviderResult<Book>(items, booksResult.NumFound);
+        }
+
+        
+       
+    }
+
+}

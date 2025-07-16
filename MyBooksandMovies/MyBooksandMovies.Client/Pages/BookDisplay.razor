@@ -1,0 +1,76 @@
+﻿<hr />
+<div class="d-flex m-4">
+    <a href="@($"/BookDetail/{Uri.EscapeDataString(Book.BookKey)}")">
+        <div>
+            <img class="bookcover" src="@(Book.CoverId != null ? CoverImageUrl : "images/covernotavailable.jpg")"
+            alt="Bookcover" />
+        </div>
+    </a>
+    <div class="mx-4">
+        <a class="booktitle" href="@($"/BookDetail/{Uri.EscapeDataString(Book.BookKey)}")">
+            <h3 >@(string.IsNullOrWhiteSpace(Book.Title) ? "Untitled Book" : Book.Title)</h3>
+        </a>
+        <span class="favorite-icon"@onclick="()=> ToggleFavoritebutton(Book)">
+            @if (Book.IsFavorite)
+            {
+               
+                <a>  <i class="bi bi-heart-fill fs-3 custom-icon-color icon-border"></i></a>
+            }
+            else
+            {
+                <a><i class="bi bi-heart fs-3  icon-border"></i></a>
+            }
+        </span>
+        <p>
+            By @(Book.Author != null && Book.Author.Any()
+                ? string.Join(", ", Book.Author)
+                : "Unknown Author")
+        </p>
+        <p> First published in @(Book.FirstPublishYear?.ToString() ?? "Unknown Year")</p>
+        @if (Book.Description != null)
+        {
+            <p>@Book.Description</p>
+        }
+
+    </div>
+</div>
+
+@code {
+
+    [Parameter] 
+    public Book Book { get; set; }
+    [Parameter]
+    public string CoverImageUrl { get; set; }
+    [Parameter]
+    public EventCallback<Book> BookIsFavoriteChanged { get; set; }
+    [Inject] 
+    public ILocalStorageService localStorage { get; set; }
+
+    public async Task ToggleFavoritebutton(Book book)
+    {
+
+        var favoriteBookList = await localStorage.GetLocalStorageAsync<List<Book>>("FavoriteBooks");
+        if (favoriteBookList == null)
+        {
+            favoriteBookList = new List<Book>();
+        }
+        if (favoriteBookList.Any(b => b.BookKey == book.BookKey))
+        {
+            favoriteBookList.RemoveAll(b => b.BookKey == book.BookKey);
+            book.IsFavorite = false;
+
+        }
+        else
+        {
+            favoriteBookList.Add(book);
+            book.IsFavorite = true;
+
+        }
+
+        await localStorage.SetLocalStorageAsync("FavoriteBooks", favoriteBookList);
+        await BookIsFavoriteChanged.InvokeAsync(book);
+        
+    }
+
+
+}

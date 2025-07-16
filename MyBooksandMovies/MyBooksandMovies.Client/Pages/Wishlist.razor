@@ -1,0 +1,56 @@
+﻿@page "/Wishlist"
+
+
+    <div class="p-4">
+
+<button @onclick="ClearWishlist" class="btn btn-primary  mx-5 clearbutton-fixed">Clear</button>
+</div>
+
+@if(!isLoaded)
+{
+    <p class="message"> Loading wishlist...</p>
+}
+else if (FavoriteListBook.Count <=0) 
+{  
+    <p class="message"> No books in your wishlist yet.</p> 
+} 
+else {
+    <Virtualize Items="FavoriteListBook" TItem="Book" Context="book">
+        <BookDisplay Book="book" CoverImageUrl="@book.CoverImageUrlMedium" BookIsFavoriteChanged="HandleFavoriteBookChanged" />
+    </Virtualize>
+
+   
+} 
+@* </div> *@
+
+@code {
+    [Inject] 
+    public ILocalStorageService localStorage { get; set; }
+    private List<Book> FavoriteListBook = new List<Book>();
+    private bool isLoaded = false;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            FavoriteListBook = await localStorage.GetLocalStorageAsync<List<Book>>("FavoriteBooks") ?? new List<Book>();
+            isLoaded = true;
+            StateHasChanged(); 
+        }
+    }
+
+    private async Task HandleFavoriteBookChanged(Book book)
+    {
+        FavoriteListBook  = await localStorage.GetLocalStorageAsync<List<Book>>("FavoriteBooks") ?? new List<Book>();
+       
+        StateHasChanged();
+    }
+
+    private async Task ClearWishlist()
+    {
+        await localStorage.RemoveItemLocalStorageAsync("FavoriteBooks");
+        FavoriteListBook.Clear();
+
+        StateHasChanged();
+    }
+}
