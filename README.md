@@ -76,7 +76,7 @@ After finishing my course, I wanted a project to:
 4. **Run the app**
 
    * Press `F5` or click **Start Debugging**
-```
+     
 ---
 
 
