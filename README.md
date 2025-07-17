@@ -63,7 +63,7 @@ After finishing my course, I wanted a project to:
    ```bash
    git clone https://github.com/yourusername/bookwishlist.git
    cd bookwishlist
-````
+   ```
 
 2. **Open the solution**
 
@@ -79,7 +79,7 @@ After finishing my course, I wanted a project to:
 
 ---
 
-
+```
 ## 🧙‍♂️ Author
 
 **Laurina Wade**
