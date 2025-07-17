@@ -53,7 +53,8 @@ After finishing my course, I wanted a project to:
 
 ### 🖥️ Prerequisites
 
-- [.NET 9 SDK (Preview or RC)](https://dotnet.microsoft.com/en-us/download/dotnet/9.0)
+- [.NET 9 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/9.0)  
+  > Most users with Visual Studio 2022+ and the ASP.NET workload already have this installed.
 - Visual Studio 2022+ (with .NET 9 support) or VS Code with C# extensions
 
 ### 🛠️ Running the Project
