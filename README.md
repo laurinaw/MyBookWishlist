@@ -82,8 +82,8 @@ After finishing my course, I wanted a project to:
 
 ## 🧙‍♂️ Author
 
-**Laurina Wade**
-📫 [YourEmail@example.com](mailto:laurina.wade@hotmail.com)  
+**Laurina Wade**  
+📫 [laurina.wade@hotmail.com](mailto:laurina.wade@hotmail.com)  
 🔗 [LinkedIn](https://linkedin.com/in/laurina-wade) | [GitHub](https://github.com/laurinaw)
 
 
