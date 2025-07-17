@@ -82,9 +82,9 @@ After finishing my course, I wanted a project to:
 
 ## 🧙‍♂️ Author
 
-**Your Name**
-📫 [YourEmail@example.com](mailto:YourEmail@example.com)
-🔗 [LinkedIn](https://linkedin.com/in/laurina-wade )| [GitHub](https://github.com/laurinaw)
+**Laurina Wade**
+📫 [YourEmail@example.com](mailto:laurina.wade@hotmail.com)  
+🔗 [LinkedIn](https://linkedin.com/in/laurina-wade) | [GitHub](https://github.com/laurinaw)
 
 ```
 
