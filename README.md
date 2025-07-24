@@ -33,19 +33,13 @@ After finishing my course, I wanted a project to:
 - ❌ **No login or database**: Simplifies the experience for users and recruiters reviewing the app
 - 🌐 **OpenLibrary API**: A free and open-source API that provides book data, perfect for prototyping
 
----
 
-## 📈 Future Improvements
-
-* 🔄 Speed up data fetching from OpenLibrary API
-* 🎬 Add similar functionality for movies 
 ---
 ## 🛠️ Tech Stack
 
 * **Blazor WebAssembly (InteractiveAuto render mode)**
-* **.NET 9**
+* **.NET 9/C#**
 * **OpenLibrary API**
-* **C# / Razor Components**
 * **Visual Studio 2022**
 
   ---
@@ -63,7 +57,7 @@ After finishing my course, I wanted a project to:
    ```bash
    git clone https://github.com/yourusername/bookwishlist.git
    cd bookwishlist
-````
+   ```
 
 2. **Open the solution**
 
@@ -76,16 +70,18 @@ After finishing my course, I wanted a project to:
 4. **Run the app**
 
    * Press `F5` or click **Start Debugging**
-
+     
 ---
 
+## 📈 Future Improvements
 
+* 🔄 Speed up data fetching from OpenLibrary API
+* 🎬 Add similar functionality for movies 
 ## 🧙‍♂️ Author
+---
+**Laurina Wade**  
+📫 [laurina.wade@hotmail.com](mailto:laurina.wade@hotmail.com)  
+🔗 [LinkedIn](https://linkedin.com/in/laurina-wade) | [GitHub](https://github.com/laurinaw)
 
-**Your Name**
-📫 [YourEmail@example.com](mailto:YourEmail@example.com)
-🔗 [LinkedIn](https://linkedin.com/in/laurina-wade )| [GitHub](https://github.com/laurinaw)
-
-```
 
 
