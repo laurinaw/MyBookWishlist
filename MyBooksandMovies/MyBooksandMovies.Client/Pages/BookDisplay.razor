@@ -10,7 +10,7 @@
         <a class="booktitle" href="@($"/BookDetail/{Uri.EscapeDataString(Book.BookKey)}")">
             <h3 >@(string.IsNullOrWhiteSpace(Book.Title) ? "Untitled Book" : Book.Title)</h3>
         </a>
-        <span class="favorite-icon"@onclick="()=> ToggleFavoritebutton(Book)">
+        <span class="favorite-icon"@onclick="()=> ToggleFavoritebutton()">
             @if (Book.IsFavorite)
             {
                
@@ -45,8 +45,15 @@
     public EventCallback<Book> BookIsFavoriteChanged { get; set; }
     [Inject] 
     public ILocalStorageService localStorage { get; set; }
+    private bool FavoriteCheck; 
 
-    public async Task ToggleFavoritebutton(Book book)
+    protected override async Task OnInitializedAsync()
+    {
+        var favoriteBookList = await localStorage.GetLocalStorageAsync<List<Book>>("FavoriteBooks");
+        Book.IsFavorite = favoriteBookList.Any(b => b.BookKey == Book.BookKey);
+
+    }
+    public async Task ToggleFavoritebutton()
     {
 
         var favoriteBookList = await localStorage.GetLocalStorageAsync<List<Book>>("FavoriteBooks");
@@ -54,21 +61,21 @@
         {
             favoriteBookList = new List<Book>();
         }
-        if (favoriteBookList.Any(b => b.BookKey == book.BookKey))
+        if (favoriteBookList.Any(b => b.BookKey == Book.BookKey))
         {
-            favoriteBookList.RemoveAll(b => b.BookKey == book.BookKey);
-            book.IsFavorite = false;
+            favoriteBookList.RemoveAll(b => b.BookKey == Book.BookKey);
+            Book.IsFavorite = false;
 
         }
         else
         {
-            favoriteBookList.Add(book);
-            book.IsFavorite = true;
+            favoriteBookList.Add(Book);
+            Book.IsFavorite = true;
 
         }
 
         await localStorage.SetLocalStorageAsync("FavoriteBooks", favoriteBookList);
-        await BookIsFavoriteChanged.InvokeAsync(book);
+        await BookIsFavoriteChanged.InvokeAsync(Book);
         
     }
 
