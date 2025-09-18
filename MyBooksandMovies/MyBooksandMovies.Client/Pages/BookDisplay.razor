@@ -49,7 +49,9 @@
 
     protected override async Task OnInitializedAsync()
     {
-        var favoriteBookList = await localStorage.GetLocalStorageAsync<List<Book>>("FavoriteBooks");
+        var favoriteBookList = await localStorage.GetLocalStorageAsync<List<Book>>("FavoriteBooks")
+                                ?? new List<Book>(); ;
+
         Book.IsFavorite = favoriteBookList.Any(b => b.BookKey == Book.BookKey);
 
     }
