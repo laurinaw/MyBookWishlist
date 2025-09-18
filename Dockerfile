@@ -5,7 +5,7 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:9.0.102 AS build
 WORKDIR /src
 COPY . .
-RUN dotnet publish MyBooksandMovies/MyBooksandMovies.csproj -c Release -o /app/publish
+RUN dotnet publish MyBooksandMovies/MyBooksandMovies/MyBooksandMovies.csproj -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
