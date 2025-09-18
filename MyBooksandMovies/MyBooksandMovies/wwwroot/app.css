@@ -1,6 +1,8 @@
 html, body {
     font-family:Lora,serif,'Times New Roman', Times;
     font-weight:1000px;
+    
+
 }
 
 a, .btn-link {
@@ -157,3 +159,52 @@ h3{
 
 }
 
+@media (max-width: 1024px) {
+    /* Shrink search bar content for smaller screens */
+    .icon-in-searchbar {
+        width: 90%;
+        max-width: 600px;
+        margin-top: 0.5rem;
+    }
+
+    /* Prevent overflow and ensure search bar stays centered */
+    .searchbar-wrapper {
+        overflow-x: hidden;
+    }
+
+    /* Shrink book cover image for phones/tablets */
+    .bookcover {
+        width: 120px;
+        height: auto;
+       
+    }
+
+    /* Make clear button scrollable and centered */
+    .clearbutton-fixed {
+        position: static;
+        margin: 1rem auto;
+        display: block;
+    }
+
+    /* Improve readability on small screens */
+   
+    .favorite-icon i {
+        font-size: 1.75rem;
+    }
+   
+}
+
+@media (max-width: 640px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+    h3 {
+        font-size: 1rem;
+    }
+
+    
+    .bookcover {
+        width: 100px;
+        height: auto;
+    }
+}

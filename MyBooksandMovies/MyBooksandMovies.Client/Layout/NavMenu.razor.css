@@ -22,7 +22,6 @@
     background: none;
     border: none;
     cursor: pointer;
-    margin-right: 10rem;
     min-width:40px;
 }
 
@@ -90,6 +89,6 @@
     color: #FAE3DF;
     text-decoration: none;
     font-family: Garamond,serif,'Times New Roman', Times;
-    margin-left: 2rem;
+/*    margin-left: 2rem;*/
 }
 
