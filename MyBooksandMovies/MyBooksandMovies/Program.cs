@@ -3,8 +3,7 @@ using MyBooksandMovies.Client.Services;
 using MyBooksandMovies.Components;
 
 var builder = WebApplication.CreateBuilder(args);
-// Tell Kestrel to listen on port 10000 (Render)
-builder.WebHost.UseUrls("http://*:10000");
+
 
 // Add services to the container.
 builder.Services.AddScoped<IBookService,BookService>();
