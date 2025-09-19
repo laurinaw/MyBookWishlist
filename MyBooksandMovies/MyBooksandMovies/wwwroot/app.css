@@ -158,21 +158,21 @@ h3{
 
 
 }
-
+/*responsive design for tablet*/
 @media (max-width: 1024px) {
-    /* Shrink search bar content for smaller screens */
+   
     .icon-in-searchbar {
         width: 90%;
         max-width: 600px;
         margin-top: 0.5rem;
     }
 
-    /* Prevent overflow and ensure search bar stays centered */
+    
     .searchbar-wrapper {
         overflow-x: hidden;
     }
 
-    /* Shrink book cover image for phones/tablets */
+    
     .bookcover {
         width: 120px;
         height: auto;
@@ -183,14 +183,14 @@ h3{
         width: auto; 
     }
 
-    /* Make clear button scrollable and centered */
+    
     .clearbutton-fixed {
         position: static;
         margin: 1rem auto;
         display: block;
     }
 
-    /* Improve readability on small screens */
+    
    
     .favorite-icon i {
         font-size: 1.75rem;
@@ -202,7 +202,7 @@ h3{
     overflow-wrap: break-word;
     word-break: break-word;
 }
-
+/*responsive design for phone */
 @media (max-width: 640px) {
     h1 {
         font-size: 1.5rem;
@@ -220,7 +220,7 @@ h3{
         width: auto; 
     }
 }
-
+/*responsive design for bookdetailpage */
 @media (max-width: 780px) {
     .bookdetail-layout {
         flex-direction: column;
