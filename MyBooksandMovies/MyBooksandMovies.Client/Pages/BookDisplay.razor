@@ -1,5 +1,5 @@
 ﻿<hr />
-<div class="d-flex m-4">
+<div class="d-flex m-4 @(IsDetailPage ?"bookdetail-layout" :"")">
     <a href="@($"/BookDetail/{Uri.EscapeDataString(Book.BookKey)}")">
         <div>
             <img class="bookcover" src="@(Book.CoverId != null ? CoverImageUrl : "images/covernotavailable.jpg")"
@@ -43,6 +43,8 @@
     public string CoverImageUrl { get; set; }
     [Parameter]
     public EventCallback<Book> BookIsFavoriteChanged { get; set; }
+    [Parameter]
+    public bool IsDetailPage { get; set; }
     [Inject] 
     public ILocalStorageService localStorage { get; set; }
     private bool FavoriteCheck; 

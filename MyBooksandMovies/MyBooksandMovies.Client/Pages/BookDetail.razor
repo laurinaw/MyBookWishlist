@@ -4,7 +4,9 @@
     <p>@message</p>
 }
 else{
-    <BookDisplay Book="detailedBook" CoverImageUrl="@detailedBook.CoverImageUrlLarge" />
+    <div class="bookdetail-page">
+    <BookDisplay Book="detailedBook" CoverImageUrl="@detailedBook.CoverImageUrlLarge"  IsDetailPage="true"/>
+    </div>
 
 }
 
