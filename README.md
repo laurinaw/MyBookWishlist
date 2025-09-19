@@ -6,7 +6,7 @@
 A simple Blazor web application where users can search for books and add them to a personal wishlist.  
 Built using **Blazor Web App (.NET 9)** with the `InteractiveAuto` render mode and consumes data from the **OpenLibrary API**.
 
-🔗 [Live Demo](https://mybookwishlist-ihfl.onrender.com)
+###🔗 [Live Demo](https://mybookwishlist-ihfl.onrender.com)
 ---
 
 ## ✨ Features
