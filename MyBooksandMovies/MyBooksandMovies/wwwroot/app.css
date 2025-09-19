@@ -197,6 +197,11 @@ h3{
     }
    
 }
+.description {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
 
 @media (max-width: 640px) {
     h1 {

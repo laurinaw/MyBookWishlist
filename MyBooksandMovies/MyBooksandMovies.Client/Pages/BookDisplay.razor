@@ -29,7 +29,9 @@
         <p> First published in @(Book.FirstPublishYear?.ToString() ?? "Unknown Year")</p>
         @if (Book.Description != null)
         {
+            <div class="description">
             <p>@Book.Description</p>
+            </div>
         }
 
     </div>
